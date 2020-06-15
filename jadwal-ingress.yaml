@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: jadwal-infra
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: sysop
+    nginx.ingress.kubernetes.io/auth-realm: "Authentication Required - ok"
+spec:
+  rules:
+  - host: jadwal-infra.biznetnetworks.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jadwal-infra
+          servicePort: http

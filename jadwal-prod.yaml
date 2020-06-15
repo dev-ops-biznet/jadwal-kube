@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jadwal-infra
+  labels:
+    app: jadwal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jadwal
+  template:
+    metadata:
+      labels:
+        app: jadwal
+    spec:
+      containers:
+      - name: jadwal-infra
+        image: devopsbiznet/jadwal:latest
+        ports:
+        - containerPort: 80
+
